@@ -47,7 +47,7 @@ const AddProduct = () => {
     let formData = new FormData();
     formData.append("product", image);
 
-    await fetch("https://shopsphere-ecom-backend.onrender.com/upload", {
+    await fetch("/upload", {
       method: "POST",
       headers: {
         Accept: "application/json",
@@ -62,7 +62,7 @@ const AddProduct = () => {
     if (responseData.success) {
       product.image = responseData.image_url;
       console.log(product);
-      await fetch("https://shopsphere-ecom-backend.onrender.com/addproduct", {
+      await fetch("/addproduct", {
         method: "POST",
         headers: {
           Accept: "application/json",

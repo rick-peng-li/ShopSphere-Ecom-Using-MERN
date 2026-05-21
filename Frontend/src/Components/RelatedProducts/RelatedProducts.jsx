@@ -10,7 +10,7 @@ const RelatedProducts = ({category}) => {
   useEffect(() => {
     const fetchRelated = async () => {
       try {
-        let res = await fetch(`https://shopsphere-ecom-backend.onrender.com/relatedproducts/${category}`);
+        let res = await fetch(`/relatedproducts/${category}`);
         let data = await res.json();
         setRelated(data);
       } catch (error) {

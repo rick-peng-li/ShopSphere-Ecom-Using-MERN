@@ -17,13 +17,13 @@ const ShopContextProvider = (props) => {
   const [cartItems, setCartItems] = useState(getDefaultCart());
 
   useEffect(() => {
-    fetch("https://shopsphere-ecom-backend.onrender.com/allproducts")
+    fetch("/allproducts")
       .then((res) => res.json())
       .then((data) => {
         setAll_product(data);
       });
     if (localStorage.getItem("auth-token")) {
-      fetch("https://shopsphere-ecom-backend.onrender.com/getcart", {
+      fetch("/getcart", {
         method: "POST",
         headers: {
           Accept: "application/form-data",
@@ -40,7 +40,7 @@ const ShopContextProvider = (props) => {
   const addToCart = (itemId) => {
     setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] + 1 }));
     if (localStorage.getItem("auth-token")) {
-      fetch("https://shopsphere-ecom-backend.onrender.com/addtocart", {
+      fetch("/addtocart", {
         method: "POST",
         headers: {
           Accept: "application/form-data",
@@ -57,7 +57,7 @@ const ShopContextProvider = (props) => {
   const removeFromCart = (itemId) => {
     setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] - 1 }));
     if (localStorage.getItem("auth-token")) {
-      fetch("https://shopsphere-ecom-backend.onrender.com/removefromcart", {
+      fetch("/removefromcart", {
         method: "POST",
         headers: {
           Accept: "application/form-data",

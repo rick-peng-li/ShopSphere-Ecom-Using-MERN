@@ -22,7 +22,7 @@ const CartItems = () => {
       return;
     }
 
-    fetch("https://shopsphere-ecom-backend.onrender.com/checkout", {
+    fetch("/checkout", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

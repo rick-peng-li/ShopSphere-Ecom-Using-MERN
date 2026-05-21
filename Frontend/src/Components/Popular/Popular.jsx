@@ -7,7 +7,7 @@ const Popular = () => {
   const [popularProduct, setpopularProduct] = useState([]);
 
   useState(() => {
-    fetch("https://shopsphere-ecom-backend.onrender.com/popularinallcategory")
+    fetch("/popularinallcategory")
       .then((res) => res.json())
       .then((data) => {
           console.log("Fetched data:", data);

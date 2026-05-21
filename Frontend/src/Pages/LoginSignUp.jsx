@@ -17,7 +17,7 @@ const LoginSignup = () => {
   const login = async () => {
     console.log("Login function executed", formData);
     let responseData;
-    await fetch("https://shopsphere-ecom-backend.onrender.com/login", {
+    await fetch("/login", {
       method: "POST",
       headers: {
         Accept: "application/form-data",
@@ -50,7 +50,7 @@ const LoginSignup = () => {
   const signup = async () => {
     console.log("Signup function executed", formData);
     let responseData;
-    await fetch("https://shopsphere-ecom-backend.onrender.com/signup", {
+    await fetch("/signup", {
       method: "POST",
       headers: {
         Accept: "application/form-data",

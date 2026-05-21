@@ -11,6 +11,7 @@ require("dotenv").config();
 
 app.use(express.json());
 app.use(cors());
+app.use(express.static(path.join(__dirname, "public")));
 
 // Configure Cloudinary
 cloudinary.config({
@@ -20,8 +21,9 @@ cloudinary.config({
 });
 
 // Data connection with MongoDB
+const mongoUri = process.env.MongoAtlasDBUrl || process.env.DATABASE || "mongodb://localhost:27017/shop-sphere";
 mongoose
-  .connect(process.env.MongoAtlasDBUrl)
+  .connect(mongoUri)
   .then(() => {
     console.log("✅ Connected to MongoDB");
   })
@@ -231,6 +233,11 @@ app.post("/checkout", fetchUser, async (req, res) => {
     console.error("Checkout error:", err);
     res.status(500).json({ success: false, message: "Checkout failed" });
   }
+});
+
+// Catch-all route to serve frontend index.html
+app.get(/.*/, (req, res) => {
+  res.sendFile(path.join(__dirname, "public", "index.html"));
 });
 
 // Start server
